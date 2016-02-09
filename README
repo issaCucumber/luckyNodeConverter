@@ -1,0 +1,21 @@
+LuckyNode Converter
+This is a snippet I built to convert the number of nodes an user earn in a game application.
+User earns 3 coloured nodes (green, blue and gold) from spinning a wheel of fortune. This JS class will convert all the earned nodes according to rules set in config file
+
+For example:
+var user_nodes = [{node: “green”}, {node: “green”}, {node: “green”}, {node: “green”}, {node: “green”},
+{node: “green”}, {node: “green”}, {node: “blue”}, {node: “blue”}, {node: “blue”},
+{node: “blue”}, {node: “blue”}, {node: “blue”}, {node: “blue”}, {node: “blue”}, {node: “blue”}, {node: “blue”}, {node: “gold”}];
+
+APP_CONFIG.NODE_RULES =  [ //start from the lowest level
+      { convertFrom : NODE_LV_1 , convertTo : NODE_LV_2, unit : 2 },
+    	{ convertFrom : NODE_LV_2 , convertTo : NODE_LV_3, unit : 3 }
+];
+
+APP_CONFIG.NODE_LEVELS = {
+			green 	: 0,
+			blue 	: 1
+};
+
+var converter = new NodeConverter();
+var converted_node = converter.convertNodes(user_nodes);
